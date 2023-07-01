@@ -1,0 +1,49 @@
+<%= form_with(model: @patient, url: @patient.persisted? ? patient_path(@patient) : patients_path, local: true) do |form| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+        <% patient.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :first_name, placeholder: "First Name" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :last_name, placeholder: "Last Name" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :gender, placeholder: "Gender" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :date_of_birth, placeholder: "Date of Birth" %>
+  </div>
+  
+  <div class="field">
+    <%= form.number_field :age, placeholder: "Age" %>
+  </div>
+  
+  <div class="field">
+    <%= form.number_field :mobile_no, placeholder: "Mobile No." %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :address, placeholder: "Address" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :city, placeholder: "City" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save', class:"btn btn-primary" %>
+  </div>
+<% end %>
