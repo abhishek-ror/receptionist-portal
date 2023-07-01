@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Receptionist Portal</a>
+    <div class="logo">
+      <%= image_tag asset_url('logo.png') %>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <ul class="navbar-nav me-auto">
+            <%# if current_user.receptionist? %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= patients_path %>">Receptionist Portal</a>
+              </li>
+            <%# elsif current_user.doctor? %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%#= doctor_patients_path %>">Doctor Portal</a>
+              </li>
+            <%# end %>
+          </ul>
+        <% end %>
+      </ul>
+    </div>
+    <!-- Login and Logout button -->
+    <% if user_signed_in? %>
+      <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+    <% elsif !user_signed_in? %>
+      <%= link_to "Log In", new_user_session_path, method: :new, class: "btn btn-success" %>
+    <% end %>
+  </div>
+</nav>
