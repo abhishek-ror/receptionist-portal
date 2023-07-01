@@ -1,0 +1,27 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  database: receptionist_portal
+  host: localhost
+  pool: 5
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  # username: postgres
+  # password: password
+   # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: receptionist_portal_development
+
+test:
+  <<: *default
+  database: receptionist_portal_test
+
+production:
+  <<: *default
+  database: receptionist_portal_production
+  username: receptionist_portal
+  password: <%= ENV["RECEPTIONIST_PORTAL_DATABASE_PASSWORD"] %>
