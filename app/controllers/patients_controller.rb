@@ -1,6 +1,7 @@
 class PatientsController < ApplicationController
 	before_action :set_patient, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource # Add this line to authorize actions
+  before_action :authenticate_user!
 
   def index
     @patients = Patient.all
@@ -11,6 +12,8 @@ class PatientsController < ApplicationController
 
   def new
     @patient = Patient.new
+    # to handle error
+    authorize! :create, @patient, message: "You are not authorized to create a new patient."
   end
 
   def create
@@ -36,6 +39,10 @@ class PatientsController < ApplicationController
   def destroy
     @patient.destroy
     redirect_to patients_url, notice: 'Patient was successfully destroyed.'
+  end
+
+  def registered_patients_by_days
+    @patients_by_days = Patient.group_by_day(:created_at).count
   end
 
   private
