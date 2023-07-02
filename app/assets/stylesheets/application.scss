@@ -15,6 +15,11 @@
  */
 @import 'bootstrap';
 
+body{
+  margin: 0;
+  padding: 0;
+}
+
 .navbar{
   background-color: #f8f9fa;
   padding: 10px;
@@ -101,4 +106,22 @@ p {
 
 .graph {
   height: 400px;
+}
+
+.footer {
+background: #f8f9fa;
+color: #000;
+margin-top:149px;
+padding-top: 10px;
+padding-bottom: 0px;
+}
+
+.footer a {
+color: #000;
+font-size: 14px;
+transition-duration: 0.2s;
+}
+.footer a:hover {
+color: #FA944B;
+text-decoration: none;
 }
