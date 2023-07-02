@@ -4,6 +4,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   ROLES = %w[receptionist doctor].freeze
+  validates :role, inclusion: { in: ROLES }
+
 
   has_many :patients
 

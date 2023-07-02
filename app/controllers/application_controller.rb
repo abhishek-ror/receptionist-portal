@@ -14,6 +14,16 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to patients_path,  flash: { error: "You are not authorized to perform this action." }
+    if current_user
+      if exception.subject == :receptionist_portal
+        redirect_to patients_path, flash: { error: "You are not authorized to access the receptionist portal." }
+      elsif exception.subject == :doctor_portal
+        redirect_to registered_patients_by_days_path, flash: { error: "You are not authorized to access the doctor portal." }
+      else
+        redirect_to root_path, flash: { error: "You are not authorized to perform this action." }
+      end
+    else
+      redirect_to new_user_session_path, flash: { error: "Please log in to continue." }
+    end
   end
 end

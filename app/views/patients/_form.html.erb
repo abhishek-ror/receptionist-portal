@@ -1,10 +1,10 @@
 <%= form_with(model: @patient, url: @patient.persisted? ? patient_path(@patient) : patients_path, local: true) do |form| %>
   <% if @patient.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
 
       <ul>
-        <% patient.errors.full_messages.each do |message| %>
+        <% @patient.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

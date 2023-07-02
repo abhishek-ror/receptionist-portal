@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_user!
 	before_action :set_patient, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource # Add this line to authorize actions
-  before_action :authenticate_user!
 
   def index
     @patients = Patient.all
@@ -17,7 +17,7 @@ class PatientsController < ApplicationController
   end
 
   def create
-    @patient = Patient.new(patient_params)
+    @patient = current_user.patients.build(patient_params)
     if @patient.save
       redirect_to @patient, notice: 'Patient was successfully created.'
     else
@@ -37,12 +37,9 @@ class PatientsController < ApplicationController
   end
 
   def destroy
+    @patient = Patient.find(params[:id])
     @patient.destroy
-    redirect_to patients_url, notice: 'Patient was successfully destroyed.'
-  end
-
-  def registered_patients_by_days
-    @patients_by_days = Patient.group_by_day(:created_at).count
+    redirect_to @patient, notice: 'Patient was successfully destroyed.'
   end
 
   private
