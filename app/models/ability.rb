@@ -10,6 +10,7 @@ class Ability
       can :manage, Patient
     elsif user.doctor?
       can :read, Patient
+      can :access, :doctor_portal
     end
   end
 end

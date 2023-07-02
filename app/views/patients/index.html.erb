@@ -1,5 +1,10 @@
 <h1>Receptionist Portal</h1>
-<%= link_to 'New Patient', new_patient_path, class: "btn btn-link" %>
+
+<% if user_signed_in? %>
+  <% if current_user.receptionist? %>
+    <%= link_to 'New Patient', new_patient_path, class: "btn btn-link" %>
+  <% end %>
+<% end %>
 
 <table class="table table-stripped">
   <thead>
@@ -20,7 +25,7 @@
   <tbody>
     <% @patients.each do |patient| %>
       <tr>
-        <td><%= patient.user_id %></td>
+        <td><%= patient.id %></td>
         <td><%= patient.first_name %></td>
         <td><%= patient.last_name %></td>
         <td><%= patient.date_of_birth %></td>
@@ -31,7 +36,7 @@
         <td><%= patient.city %></td>
         <td><%= link_to 'Show', patient_path(patient), class:"btn btn-link" %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient), class:"btn btn-link" %></td>
-        <td><%= link_to 'Destroy', patient_path(patient), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-link" %></td>
+        <td><%= button_to 'Delete', patient_path(patient), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-link" %></td>
       </tr>
     <% end %>
   </tbody>
