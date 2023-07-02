@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root to: 'homes#index'
 
   resources :patients
+  get 'registered_patients_by_days', to: 'patients#registered_patients_by_days'
 end

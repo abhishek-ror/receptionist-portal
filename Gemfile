@@ -30,6 +30,9 @@ gem "devise"
 gem "cancancan"
 gem 'sass-rails'
 gem "bootstrap"
+gem 'chartkick'
+gem 'groupdate'
+
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
