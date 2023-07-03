@@ -1,8 +1,9 @@
 <div class="container">
   <h1>Registered Patients by Days</h1>
+  <p>Total Patients Today: <%= @patient_count %></p>
+  
   <div class="graph">
     <canvas id="patientsChart"></canvas>
     <%= line_chart @patients_by_days, id: "patientschart", height:"400px" %>
   </div>
-  <p>Total Patients Today: <%= @patient_count %></p>
 </div>

@@ -9,7 +9,7 @@ class Doctor::PatientsController < ApplicationController
 	end
 
   def registered_patients_by_days
-    @patients_by_days = Patient.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).count
+    @patients_by_days = Patient.group_by_day(:created_at, range: 1.weeks.ago..Time.now, expand_range: true).count
     @patient_count = Patient.where("DATE(created_at) = ?", Date.today).count
 
     respond_to do |format|

@@ -105,7 +105,15 @@ p {
 }
 
 .graph {
+  width: 100%;
   height: 400px;
+  margin-bottom: 20px;
+}
+
+.total-patients {
+  margin-top: 10px;
+  font-weight: bold;
+  color: red;
 }
 
 .footer {
