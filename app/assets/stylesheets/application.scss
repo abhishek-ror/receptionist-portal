@@ -125,3 +125,83 @@ transition-duration: 0.2s;
 color: #FA944B;
 text-decoration: none;
 }
+
+.box {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.receptionist-portal {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.receptionist-portal h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.receptionist-portal .btn {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.receptionist-portal table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.receptionist-portal th,
+.receptionist-portal td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.receptionist-portal th {
+  background-color: #f5f5f5;
+}
+
+.receptionist-portal tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.receptionist-portal tbody tr:hover {
+  background-color: #e9e9e9;
+}
+
+@media (max-width: 768px) {
+  .receptionist-portal table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .receptionist-portal th,
+  .receptionist-portal td {
+    white-space: nowrap;
+  }
+
+  .receptionist-portal th:nth-child(n+4),
+  .receptionist-portal td:nth-child(n+4) {
+    display: none;
+  }
+}
