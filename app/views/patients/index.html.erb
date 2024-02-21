@@ -1,5 +1,3 @@
-<h1>Receptionist Portal</h1>
-
 <% if user_signed_in? %>
   <% if current_user.receptionist? %>
     <%= link_to 'New Patient', new_patient_path, class: "btn btn-link" %>
@@ -10,8 +8,7 @@
   <thead>
     <tr>
       <th>S.No.</th>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th>Name</th>
       <th>Date of Birth</th>
       <th>Age</th>
       <th>Gender</th>
@@ -26,8 +23,7 @@
     <% @patients.each do |patient| %>
       <tr>
         <td><%= patient.id %></td>
-        <td><%= patient.first_name %></td>
-        <td><%= patient.last_name %></td>
+        <td><%= patient.name %></td>
         <td><%= patient.date_of_birth %></td>
         <td><%= patient.age %></td>
         <td><%= patient.gender %></td>

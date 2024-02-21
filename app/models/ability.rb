@@ -5,11 +5,11 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    
+
     if user.receptionist?
       can :manage, Patient
     elsif user.doctor?
-      can :read, Patient
+      can :manage, Patient
       can :access, :doctor_portal
     end
   end

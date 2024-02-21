@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
   load_and_authorize_resource # Add this line to authorize actions
 
   def index
-    @patients = Patient.all
+    @patients = Patient.order(:id)
   end
 
   def show
