@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -15,5 +15,9 @@ class User < ApplicationRecord
 
   def doctor?
     role == 'doctor'
+  end
+
+  def name(first_name, last_name)
+    "#{first_name} #{last_name}"
   end
 end

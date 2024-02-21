@@ -1,9 +1,9 @@
 class Doctor::PatientsController < ApplicationController
-  
+
   before_action :registered_patients_by_days, only: :registered_patients_by_days
 
-  require 'groupdate'	
-	
+  require 'groupdate'
+
   def index
     @patients = Patient.all
 	end
